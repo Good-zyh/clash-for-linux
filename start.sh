@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# 本机IP
+IP=$(hostname -I | awk '{print $1}')
 # 加载系统函数库(Only for RHEL Linux)
 # [ -f /etc/init.d/functions ] && source /etc/init.d/functions
 
@@ -179,7 +180,7 @@ fi
 
 # Output Dashboard access address and Secret
 echo ''
-echo -e "Clash Dashboard 访问地址: http://<ip>:9090/ui"
+echo -e "Clash Dashboard 访问地址: http://$ip:9090/ui"
 echo -e "Secret: ${Secret}"
 echo ''
 
@@ -225,7 +226,7 @@ echo -e "             ﾚ'ヽL__|___i,___,ンﾚ|ノ"
 echo -e "                  ﾄ-,/  |___./"
 echo -e "                  'ｰ'    !_,.:"
 echo -e "本项目完全免费，若你是收费买的，恭喜您，您被骗了！"
-echo -e "项目地址：https://github.com/Elegycloud/clash-for-linux-backup"
+echo -e "项目地址：https://github.com/Good-zyh/clash-for-linux-"
 echo -e "项目随时会寄，且行且珍惜！"
 echo -e "请执行以下命令加载环境变量: source /etc/profile.d/clash.sh\n"
 echo -e "请执行以下命令开启系统代理: proxy_on\n"
