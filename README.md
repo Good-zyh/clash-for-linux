@@ -3,7 +3,6 @@
 # 项目介绍
 
 此项目是通过使用开源项目[clash（已跑路）](https://github.com/Dreamacro/clash)作为核心程序，再结合脚本实现简单的代理功能。<br>
-clash核心备份仓库[Clash-backup](https://github.com/Elegycloud/clash-for-linux-backup)
 
 主要是为了解决我们在服务器上下载GitHub等一些国外资源速度慢的问题。
 
@@ -14,10 +13,6 @@ clash for linux 备份(备份号：202311091510)。
 
 # 使用须知
 
-- 运行本项目建议使用root用户，或者使用 sudo 提权。
-- 使用过程中如遇到问题，请优先查已有的 [issues](https://github.com/Elegycloud/clash-for-linux-backup/issues)。
-- 在进行issues提交前，请替换提交内容中是敏感信息（例如：订阅地址）。
-- 本项目是基于 [clash（已跑路）](https://github.com/Dreamacro/clash) 、[yacd](https://github.com/haishanh/yacd) 进行的配置整合，关于clash、yacd的详细配置请去原项目查看。
 - 此项目不提供任何订阅信息，请自行准备Clash订阅地址。
 - 运行前请手动更改`.env`文件中的`CLASH_URL`变量值，否则无法正常运行。
 - 当前在RHEL系列和Debian,Kali Linux,ubuntu以及Linux系统中测试过，其他系列可能需要适当修改脚本。
@@ -26,7 +21,6 @@ clash for linux 备份(备份号：202311091510)。
 - 【若系统代理无法使用，但是想要系统代理，请修改尝试修改start.sh中的端口后执行环境变量命令！】
 - 【还是无法使用请更换当前网络环境（也是其中一个因素！）】
 - 【谷歌，twitter，youtube等可能无法ping通，正常现象！】
-> **注意**：当你在使用此项目时，遇到任何无法独自解决的问题请优先前往 [Issues](https://github.com/Elegycloud/clash-for-linux-backup/issue) 寻找解决方法。由于空闲时间有限，后续将不再对Issues中 “已经解答”、“已有解决方案” 的问题进行重复性的回答。
 
 <br>
 
@@ -37,14 +31,14 @@ clash for linux 备份(备份号：202311091510)。
 下载项目
 
 ```bash
-$ git clone https://github.com/Elegycloud/clash-for-linux-backup.git
+ git clone https://github.com/Good-zyh/clash-for-linux.git
 ```
 
 进入到项目目录，编辑`.env`文件，修改变量`CLASH_URL`的值。
 
 ```bash
-$ cd clash-for-linux
-$ vim .env
+ cd clash-for-linux
+ vim .env
 ```
 
 > **注意：** `.env` 文件中的变量 `CLASH_SECRET` 为自定义 Clash Secret，值为空时，脚本将自动生成随机字符串。
@@ -58,13 +52,13 @@ $ vim .env
 - 进入项目目录
 
 ```bash
-$ cd clash-for-linux
+ cd clash-for-linux
 ```
 
 - 运行启动脚本
 
 ```bash
-$ sudo bash start.sh
+ sudo bash start.sh
 
 正在检测订阅地址...
 Clash订阅地址可访问！                                      [  OK  ]
@@ -87,14 +81,14 @@ Secret：xxxxxxxxxxxxx
 ```
 
 ```bash
-$ source /etc/profile.d/clash.sh
-$ proxy_on
+ source /etc/profile.d/clash.sh
+ proxy_on
 ```
 
 - 检查服务端口
 
 ```bash
-$ netstat -tln | grep -E '9090|789.'
+ netstat -tln | grep -E '9090|789.'
 tcp        0      0 127.0.0.1:9090          0.0.0.0:*               LISTEN     
 tcp6       0      0 :::7890                 :::*                    LISTEN     
 tcp6       0      0 :::7891                 :::*                    LISTEN     
@@ -104,7 +98,7 @@ tcp6       0      0 :::7892                 :::*                    LISTEN
 - 检查环境变量
 
 ```bash
-$ env | grep -E 'http_proxy|https_proxy'
+ env | grep -E 'http_proxy|https_proxy'
 http_proxy=http://127.0.0.1:7890
 https_proxy=http://127.0.0.1:7890
 ```
@@ -127,20 +121,20 @@ https_proxy=http://127.0.0.1:7890
 - 进入项目目录
 
 ```bash
-$ cd clash-for-linux
+ cd clash-for-linux
 ```
 
 - 关闭服务
 
 ```bash
-$ sudo bash shutdown.sh
+ sudo bash shutdown.sh
 
 服务关闭成功，请执行以下命令关闭系统代理：proxy_off
 
 ```
 
 ```bash
-$ proxy_off
+ proxy_off
 ```
 
 然后检查程序端口、进程以及环境变量`http_proxy|https_proxy`，若都没则说明服务正常关闭。
